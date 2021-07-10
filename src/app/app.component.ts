@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], 
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'ShotLink';
@@ -40,14 +39,15 @@ export class AppComponent {
       thumbnail: this.thumbnailPreview
     }
 
-    var url = "https://41d9697a9b59.ngrok.io";
-    this.http
-    .post<any>(url, JSON.stringify(register),{headers:new HttpHeaders().set('Content-Type','application/json')})
+    console.log(JSON.stringify(register));
+    var url = "http://localhost:9999/add-page";
+
+    var header = new HttpHeaders().set('Content-Type','application/json');
+
+    this.http.post<any>(url, JSON.stringify(register),{ headers: header})
     .subscribe(data => {
         console.log(data);
     });
   }
-
-
 
 }
